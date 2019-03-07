@@ -149,6 +149,8 @@ ul {
 }
 
 img {
+  border: 5px dashed salmon;
+  cursor: pointer;  
   padding: 10px;
 }
 
