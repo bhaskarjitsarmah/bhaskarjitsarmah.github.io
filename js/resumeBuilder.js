@@ -1,14 +1,14 @@
 var bio = {
-  name: 'Avi Aryan',
-  role: 'Full stack engineer',
+  name: 'Bhaskarjit Sarmah',
+  role: 'Data Scientist',
   contacts: {
-    mobile: '8581817978',
-    email: 'aviaryan123(at)gmail',
-    github: 'aviaryan',
-    twitter: 'aviaryan123',
-    location: 'Gandhinagar, India'
+    mobile: '9022087053',
+    email: 'bhaskarjitsarmah@gmail.com',
+    github: 'bhaskarjitsarmah',
+    twitter: 'iambhaskarjit',
+    location: 'Delhi, India'
   },
-  welcomeMessage: 'I am a newly graduate full stack engineer currently working as a mentor at Udacity and Google Summer of Code.',
+  welcomeMessage: 'I am a Data Scientist with over 4+ years of experience',
   skills: ['Golang', 'Backend', 'Python', 'Flask', 'React', 'Docker'],
   biopic: 'images/avi.jpg'
 };
