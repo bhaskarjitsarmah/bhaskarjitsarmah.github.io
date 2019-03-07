@@ -10,7 +10,7 @@ var bio = {
   },
   welcomeMessage: 'I am a Data Scientist with over 4+ years of experience',
   skills: ['Golang', 'Backend', 'Python', 'Flask', 'React', 'Docker'],
-  biopic: 'images/avi.jpg'
+  biopic: 'images/bhaskarjit.jpeg'
 };
 
 var education = {
