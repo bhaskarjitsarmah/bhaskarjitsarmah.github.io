@@ -20,7 +20,15 @@ var education = {
     degree: 'B.Tech',
     majors: ['Mechanical Engineer'],
     dates: '2009-13'
-  }, ],
+  },
+	{
+    name: 'NIIT University',
+    location: 'Neemrana',
+    degree: 'MBA',
+    majors: ['Business Analytics'],
+    dates: '2009-13'
+  },
+  ],
   onlineCourses: [{
       title: 'Machine Learning Engineer ND',
       school: 'Udacity',
