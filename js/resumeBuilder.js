@@ -9,54 +9,54 @@ var bio = {
     location: 'Delhi, India'
   },
   welcomeMessage: 'I am a Data Scientist with over 4+ years of experience',
-  skills: ['Golang', 'Backend', 'Python', 'Flask', 'React', 'Docker'],
+  skills: ['R', 'Python', 'SQL', 'Java', 'Spark', 'C++'],
   biopic: 'images/bhaskarjit.jpeg'
 };
 
 var education = {
   schools: [{
-    name: 'IIIT Vadodara',
-    location: 'Vadodara',
+    name: 'Tezpur University',
+    location: 'Tezpur',
     degree: 'B.Tech',
-    majors: ['Computer Science'],
-    dates: '2014-18'
+    majors: ['Mechanical Engineer'],
+    dates: '2009-13'
   }, ],
   onlineCourses: [{
-      title: 'Full Stack ND',
+      title: 'Machine Learning Engineer ND',
       school: 'Udacity',
       dates: 'July 2017',
-      url: 'https://www.udacity.com/course/full-stack-web-developer-nanodegree--nd004'
+      url: 'https://in.udacity.com/course/machine-learning-engineer-nanodegree--nd009t'
     },
     {
-      title: 'Android ND',
+      title: 'Natural Language Processing ND',
       school: 'Udacity',
-      dates: '2016',
-      url: 'https://www.udacity.com/course/android-developer-nanodegree-by-google--nd801'
+      dates: '2018',
+      url: 'https://in.udacity.com/course/natural-language-processing-nanodegree--nd892'
     }
   ]
 };
 
 var work = {
   jobs: [{
-      employer: 'Appbase.io',
-      title: 'Infrastructure Engineer',
-      location: 'Delhi',
-      dates: '2017',
-      description: 'Worked on the Go backend infrastructure of Appbase.io'
+      employer: 'BlackRock',
+      title: 'Data Science Associate',
+      location: 'Gurgaon',
+      dates: 'Jan, 2019',
+      description: 'Working on a liquidity risk analytics project to predict liquidity for different securities in different asset classes'
     },
     {
-      employer: 'Udacity',
-      title: 'Mentor',
-      location: 'Gandhinagar',
-      dates: '2017',
-      description: 'Mentored students on full stack and Udacity courses.'
+      employer: 'Grail Insights',
+      title: 'Data Science Manager',
+      location: 'Noida',
+      dates: 'Aug, 2018 - Dec, 2018',
+      description: 'Worked to build a social media nlp engine to predict sentiments of customers for a travel client'
     },
     {
-      employer: 'Google Summer of Code',
-      title: 'Software Developer',
-      location: 'Patna',
-      dates: '2016',
-      description: 'Worked on a Flask backend server and Docker deployment.'
+      employer: 'WNS',
+      title: 'Data Science Consultant',
+      location: 'Gurgaon',
+      dates: 'Aug, 2017 - July, 2018',
+      description: 'Worked on to build a computer vision solution to predict rooftop damages from images'
     },
   ]
 };
