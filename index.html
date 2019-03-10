@@ -30,7 +30,7 @@ need to load. You'll see a lot of <link>s to CSS files for styles and
   <!--
   Uncomment the <script> tag below when you're ready to add an interactive Google Map to your resume!
   -->
-  <script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyB-zZ0NG2SZADPqvHHfv5DF_cBNl7lxpBM"></script>
+  <script src="http://maps.googleapis.com/maps/api/js?libraries=places"></script>
 
   <meta name="viewport" content="width=device-width,initial-scale=1">
 </head>
@@ -139,7 +139,7 @@ need to load. You'll see a lot of <link>s to CSS files for styles and
     if(document.getElementsByClassName('flex-item').length === 0) {
       document.getElementById('lets-connect').style.display = 'none';
     }
-    if(document.getElementById('map') === null) {
+    if(document.getElementById('map') == undefined) {
       document.getElementById('mapDiv').style.display = 'none';
     }
   </script>
