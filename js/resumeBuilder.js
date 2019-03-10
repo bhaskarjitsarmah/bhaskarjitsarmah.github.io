@@ -26,7 +26,7 @@ var education = {
     location: 'Neemrana',
     degree: 'MBA',
     majors: ['Business Analytics'],
-    dates: '2009-13'
+    dates: '2016-17'
   },
   ],
   onlineCourses: [{
