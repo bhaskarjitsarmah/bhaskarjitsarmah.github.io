@@ -58,6 +58,13 @@ var work = {
       dates: 'Aug, 2017 - July, 2018',
       description: 'Worked on to build a computer vision solution to predict rooftop damages from images'
     },
+	{
+      employer: 'Capgemini',
+      title: 'Consultant',
+      location: 'Mumbai',
+      dates: 'June, 2013 - July, 2016',
+      description: "Worked on to build Capgemini's first SaaS product for a media and entertainment client"
+    },
   ]
 };
 
