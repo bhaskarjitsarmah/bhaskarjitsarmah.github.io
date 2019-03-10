@@ -78,11 +78,11 @@ var work = {
 
 var projects = {
   projects: [{
-      title: 'Clipjump',
+      title: 'Correlation',
       dates: '2013-16',
-      description: 'Clipboard manager for Windows with 100k downloads.',
-      images: ['images/clipjump_1.jpg', 'images/clipjump_2.jpg'],
-      url: 'https://is.gd/clipjump'
+      description: 'Is there a relationship between the sepal length and petal length of flower?',
+      images: ['images/correlation.png'],
+      url: 'https://bhaskarjitsarmah.github.io/Correlation.html'
     },
     {
       title: 'Portfolio',
