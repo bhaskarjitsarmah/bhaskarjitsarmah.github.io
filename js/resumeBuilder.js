@@ -78,18 +78,20 @@ var work = {
 
 var projects = {
   projects: [{
-      title: 'Correlation',
+      title: 'Correlation: Finding Relationship Between Variables',
       dates: '2013-16',
       description: 'Is there a relationship between the sepal length and petal length of flower?',
       images: ['images/correlation.png'],
       url: 'https://bhaskarjitsarmah.github.io/Correlation.html'
     },
-    {
-      title: 'Portfolio',
-      dates: '2017',
-      description: 'Dynamic portfolio built in React',
-      url: 'http://aviaryan.in/work'
-    }
+	{
+      title: 'ANOVA Test: Finding Relationship Between Variables',
+      dates: '2013-16',
+      description: ' Is there any relationship between variables mpg (miles per gallon) of a car and cylinders (number of cylinders) the car have?',
+      images: ['images/anova_test.png'],
+      url: 'https://bhaskarjitsarmah.github.io/anova_test.html'
+    },
+    
   ]
 };
 
