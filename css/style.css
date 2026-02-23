@@ -477,8 +477,6 @@ a { color: inherit; }
   border: 1px solid var(--border);
   border-radius: var(--radius);
   padding: 1.75rem 2rem 1.5rem;
-  overflow-x: auto;
-  -webkit-overflow-scrolling: touch;
 }
 
 .gantt-eyebrow {
@@ -487,70 +485,81 @@ a { color: inherit; }
   letter-spacing: 0.09em;
   text-transform: uppercase;
   color: var(--text-muted);
-  margin-bottom: 1.4rem;
+  margin-bottom: 1.25rem;
+}
+
+/* Scrollable wrapper so the chart never wraps on small screens */
+.gantt-scroll {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
 }
 
 .gantt-inner {
   min-width: 520px;
-  display: flex;
-  flex-direction: column;
-  gap: 0;
 }
 
-.gantt-axis-row,
+/* Each row: label | track */
 .gantt-row {
-  display: grid;
-  grid-template-columns: 110px 1fr;
-  gap: 1.25rem;
+  display: flex;
+  flex-direction: row;
   align-items: center;
+  gap: 1.25rem;
+  margin-bottom: 0.5rem;
 }
 
-.gantt-axis-row { margin-bottom: 0.5rem; }
-.gantt-row      { margin-bottom: 0.5rem; }
 .gantt-row:last-child { margin-bottom: 0; }
 
-/* Label column */
-.gantt-col-label {
+.gantt-row--axis { margin-bottom: 0.4rem; }
+
+/* Label */
+.gantt-label {
+  width: 110px;
+  min-width: 110px;
+  flex-shrink: 0;
+  text-align: right;
   font-size: 0.78rem;
   font-weight: 600;
   color: var(--text-secondary);
-  text-align: right;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
 
-/* Track column */
-.gantt-col-track {
-  position: relative;
+/* Data track */
+.gantt-track {
+  flex: 1;
+  position: relative;    /* anchors absolute bars */
   height: 26px;
   border-radius: 4px;
   background-color: var(--bg-surface);
-  /* Subtle vertical gridlines every year (12/158 months = 7.5949%) */
-  background-image: linear-gradient(to right, rgba(255, 255, 255, 0.055) 1px, transparent 1px);
+  /* Subtle yearly gridlines: 12/158 months ≈ 7.5949% per year */
+  background-image: linear-gradient(to right, rgba(255,255,255,0.07) 1px, transparent 1px);
   background-size: 7.5949% 100%;
   overflow: hidden;
 }
 
-/* Axis label track */
-.gantt-col-track--axis {
-  height: auto;
-  background: none;
-  overflow: visible;
+/* Axis track — transparent, no clipping, labels are absolute */
+.gantt-track--axis {
+  background-color: transparent;
+  background-image: none;
+  height: 16px;
+  overflow: visible;      /* let labels overflow the track height */
   position: relative;
 }
 
-.gantt-col-track--axis span {
+.gantt-track--axis span {
   position: absolute;
+  top: 0;
   font-family: 'Fira Code', monospace;
   font-size: 0.68rem;
+  line-height: 16px;
   color: var(--text-muted);
   transform: translateX(-50%);
   white-space: nowrap;
   user-select: none;
 }
 
-/* Bars */
+/* Bars — absolutely positioned inside .gantt-track */
 .gantt-bar {
   position: absolute;
   top: 3px;
@@ -562,14 +571,14 @@ a { color: inherit; }
   font-family: 'Fira Code', monospace;
   font-size: 0.68rem;
   font-weight: 600;
-  color: rgba(255, 255, 255, 0.92);
+  color: rgba(255,255,255,0.92);
   white-space: nowrap;
   overflow: hidden;
   cursor: default;
-  transition: filter var(--transition), opacity var(--transition);
+  transition: filter 0.22s ease;
 }
 
-.gantt-bar:hover { filter: brightness(1.18); }
+.gantt-bar:hover { filter: brightness(1.2); }
 
 .gantt-bar--blue {
   background: linear-gradient(90deg, #2563eb, #60a5fa);
@@ -591,16 +600,16 @@ a { color: inherit; }
   box-shadow: 0 0 14px rgba(0, 201, 167, 0.28);
 }
 
-/* Pulsing "live" dot on the currently active role */
+/* Pulsing dot on active/current role */
 .gantt-bar--active::after {
   content: '';
   position: absolute;
-  right: 5px;
+  right: 4px;
   top: 50%;
   transform: translateY(-50%);
-  width: 6px;
-  height: 6px;
-  background: rgba(255, 255, 255, 0.9);
+  width: 5px;
+  height: 5px;
+  background: rgba(255,255,255,0.9);
   border-radius: 50%;
   animation: ganttPulse 2s ease-in-out infinite;
 }
