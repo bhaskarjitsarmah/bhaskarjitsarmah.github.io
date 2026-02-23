@@ -469,6 +469,162 @@ a { color: inherit; }
 }
 
 /* ============================================================
+   GANTT / CAREER TENURE CHART
+   ============================================================ */
+.gantt {
+  margin-bottom: 4rem;
+  background: var(--bg-card-solid);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.75rem 2rem 1.5rem;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.gantt-eyebrow {
+  font-family: 'Fira Code', monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 1.4rem;
+}
+
+.gantt-inner {
+  min-width: 520px;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.gantt-axis-row,
+.gantt-row {
+  display: grid;
+  grid-template-columns: 110px 1fr;
+  gap: 1.25rem;
+  align-items: center;
+}
+
+.gantt-axis-row { margin-bottom: 0.5rem; }
+.gantt-row      { margin-bottom: 0.5rem; }
+.gantt-row:last-child { margin-bottom: 0; }
+
+/* Label column */
+.gantt-col-label {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  text-align: right;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Track column */
+.gantt-col-track {
+  position: relative;
+  height: 26px;
+  border-radius: 4px;
+  background-color: var(--bg-surface);
+  /* Subtle vertical gridlines every year (12/158 months = 7.5949%) */
+  background-image: linear-gradient(to right, rgba(255, 255, 255, 0.055) 1px, transparent 1px);
+  background-size: 7.5949% 100%;
+  overflow: hidden;
+}
+
+/* Axis label track */
+.gantt-col-track--axis {
+  height: auto;
+  background: none;
+  overflow: visible;
+  position: relative;
+}
+
+.gantt-col-track--axis span {
+  position: absolute;
+  font-family: 'Fira Code', monospace;
+  font-size: 0.68rem;
+  color: var(--text-muted);
+  transform: translateX(-50%);
+  white-space: nowrap;
+  user-select: none;
+}
+
+/* Bars */
+.gantt-bar {
+  position: absolute;
+  top: 3px;
+  height: 20px;
+  border-radius: 3px;
+  display: flex;
+  align-items: center;
+  padding: 0 0.5rem;
+  font-family: 'Fira Code', monospace;
+  font-size: 0.68rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.92);
+  white-space: nowrap;
+  overflow: hidden;
+  cursor: default;
+  transition: filter var(--transition), opacity var(--transition);
+}
+
+.gantt-bar:hover { filter: brightness(1.18); }
+
+.gantt-bar--blue {
+  background: linear-gradient(90deg, #2563eb, #60a5fa);
+  box-shadow: 0 0 14px rgba(96, 165, 250, 0.22);
+}
+
+.gantt-bar--amber {
+  background: linear-gradient(90deg, #b45309, #f59e0b);
+  box-shadow: 0 0 14px rgba(245, 158, 11, 0.22);
+}
+
+.gantt-bar--purple {
+  background: linear-gradient(90deg, #5b21b6, #7c6ff7);
+  box-shadow: 0 0 14px rgba(124, 111, 247, 0.28);
+}
+
+.gantt-bar--teal {
+  background: linear-gradient(90deg, #0e7490, #00c9a7);
+  box-shadow: 0 0 14px rgba(0, 201, 167, 0.28);
+}
+
+/* Pulsing "live" dot on the currently active role */
+.gantt-bar--active::after {
+  content: '';
+  position: absolute;
+  right: 5px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 6px;
+  height: 6px;
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 50%;
+  animation: ganttPulse 2s ease-in-out infinite;
+}
+
+@keyframes ganttPulse {
+  0%, 100% { opacity: 1;   transform: translateY(-50%) scale(1);   }
+  50%       { opacity: 0.3; transform: translateY(-50%) scale(0.5); }
+}
+
+/* Duration pill on timeline cards */
+.duration-pill {
+  display: inline-block;
+  font-family: 'Fira Code', monospace;
+  font-size: 0.7rem;
+  font-weight: 500;
+  color: var(--text-muted);
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  padding: 0.12rem 0.55rem;
+  border-radius: 100px;
+  margin-bottom: 0.35rem;
+}
+
+/* ============================================================
    TIMELINE
    ============================================================ */
 .timeline {
