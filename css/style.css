@@ -586,8 +586,8 @@ a { color: inherit; }
 }
 
 .gantt-bar--amber {
-  background: linear-gradient(90deg, #b45309, #f59e0b);
-  box-shadow: 0 0 14px rgba(245, 158, 11, 0.22);
+  background: linear-gradient(90deg, #be123c, #fb7185);
+  box-shadow: 0 0 14px rgba(251, 113, 133, 0.3);
 }
 
 .gantt-bar--purple {
