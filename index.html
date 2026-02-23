@@ -1,72 +1,366 @@
 <!DOCTYPE html>
-
-<html>
+<html lang="en">
 <head>
-  
-  <meta charset="utf-8">
-  <title>Resume</title>
-  <link href="css/style.css" rel="stylesheet">
-  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB-zZ0NG2SZADPqvHHfv5DF_cBNl7lxpBM&libraries=places"></script>
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bhaskarjit Sarmah — Data Scientist</title>
+  <meta name="description" content="Bhaskarjit Sarmah — Data Scientist specializing in machine learning, NLP, and computer vision.">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
 </head>
-
 <body>
 
-  <div id="main">    
-    <div id="header" class="center-content clear-fix">
-      <ul id="topContacts" class="flex-box"></ul>
-    </div>
-    <div style="clear: both;"></div>
-    <div id="workExperience" class="gray">
-      <h2>Work Experience</h2>
-    </div>
-    <div id="projects">
-      <h2>Projects</h2>
-    </div>
-    <div id="education" class="gray">
-      <h2>Education</h2>
-    </div>
-    <div id="mapDiv">
-      <h2>Where I've Lived and Worked</h2>
-    </div>
-    <div id="lets-connect" class="dark-gray">
-      <h2 class="orange center-text">Let's Connect</h2>
-        <ul id="footerContacts" class="flex-box">
+  <!-- Navigation -->
+  <nav class="nav" id="nav">
+    <div class="nav-container">
+      <div class="nav-logo">BS</div>
+      <ul class="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#education">Education</a></li>
+        <li><a href="#contact" class="nav-cta">Contact</a></li>
       </ul>
+      <button class="nav-hamburger" id="nav-hamburger" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
     </div>
+  </nav>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu" id="mobile-menu">
+    <ul>
+      <li><a href="#about">About</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#education">Education</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
   </div>
 
-  
-  <script src="js/jQuery.js"></script>
+  <!-- Hero / About -->
+  <section class="hero" id="about">
+    <div class="hero-bg-glow hero-bg-glow--purple"></div>
+    <div class="hero-bg-glow hero-bg-glow--teal"></div>
+    <div class="hero-content">
+      <div class="hero-text">
+        <p class="hero-greeting">Hi there, I'm</p>
+        <h1 class="hero-name">Bhaskarjit Sarmah</h1>
+        <h2 class="hero-role">Data Scientist</h2>
+        <p class="hero-bio">
+          I turn data into actionable insights. With expertise in machine learning, NLP, and computer vision,
+          I build intelligent systems that solve real-world problems across finance, market research, and insurance.
+        </p>
+        <div class="hero-skills">
+          <span class="skill-tag">Python</span>
+          <span class="skill-tag">R</span>
+          <span class="skill-tag">SQL</span>
+          <span class="skill-tag">Spark</span>
+          <span class="skill-tag">Machine Learning</span>
+          <span class="skill-tag">NLP</span>
+          <span class="skill-tag">Java</span>
+          <span class="skill-tag">C++</span>
+        </div>
+        <div class="hero-cta">
+          <a href="#contact" class="btn-primary">Get in Touch</a>
+          <a href="#experience" class="btn-secondary">View Work</a>
+        </div>
+      </div>
+      <div class="hero-image-wrap">
+        <div class="hero-image-ring"></div>
+        <img src="images/bhaskarjit.jpeg" alt="Bhaskarjit Sarmah" class="hero-image">
+      </div>
+    </div>
+    <a href="#experience" class="scroll-hint" aria-label="Scroll down">
+      <span class="scroll-hint-arrow"></span>
+    </a>
+  </section>
 
-  <script src="js/helper.js"></script>
+  <!-- Experience -->
+  <section class="section" id="experience">
+    <div class="container">
+      <h2 class="section-title">Work Experience</h2>
+      <div class="timeline">
 
-  <script src="js/resumeBuilder.js"></script>
+        <div class="timeline-item fade-in">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <div class="timeline-header">
+              <h3 class="company">BlackRock</h3>
+              <span class="timeline-badge">Jan 2019 — Present</span>
+            </div>
+            <p class="job-title">Data Science Associate</p>
+            <p class="job-location">Gurgaon, India</p>
+            <p class="job-description">
+              Working on a liquidity risk analytics project to predict liquidity for different securities across multiple asset classes, enabling smarter risk management decisions.
+            </p>
+            <div class="tech-tags">
+              <span class="tech-tag">Finance</span>
+              <span class="tech-tag">Risk Analytics</span>
+              <span class="tech-tag">Machine Learning</span>
+              <span class="tech-tag">Python</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="timeline-item fade-in">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <div class="timeline-header">
+              <h3 class="company">Grail Insights</h3>
+              <span class="timeline-badge">Aug 2018 — Dec 2018</span>
+            </div>
+            <p class="job-title">Data Science Manager</p>
+            <p class="job-location">Noida, India</p>
+            <p class="job-description">
+              Built a social media NLP engine to predict customer sentiments for a leading travel client, enabling real-time brand monitoring and response strategies.
+            </p>
+            <div class="tech-tags">
+              <span class="tech-tag">NLP</span>
+              <span class="tech-tag">Sentiment Analysis</span>
+              <span class="tech-tag">Python</span>
+              <span class="tech-tag">Social Media</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="timeline-item fade-in">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <div class="timeline-header">
+              <h3 class="company">WNS</h3>
+              <span class="timeline-badge">Aug 2017 — Jul 2018</span>
+            </div>
+            <p class="job-title">Data Science Consultant</p>
+            <p class="job-location">Gurgaon, India</p>
+            <p class="job-description">
+              Built a computer vision solution to predict rooftop damages from aerial images, automating insurance claim processing and improving assessment accuracy.
+            </p>
+            <div class="tech-tags">
+              <span class="tech-tag">Computer Vision</span>
+              <span class="tech-tag">Deep Learning</span>
+              <span class="tech-tag">Python</span>
+              <span class="tech-tag">Insurance</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="timeline-item fade-in">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <div class="timeline-header">
+              <h3 class="company">Capgemini</h3>
+              <span class="timeline-badge">Jun 2013 — Jul 2016</span>
+            </div>
+            <p class="job-title">Consultant</p>
+            <p class="job-location">Mumbai, India</p>
+            <p class="job-description">
+              Worked on building Capgemini's first SaaS product for a media and entertainment client, bridging engineering and product teams to deliver a scalable platform.
+            </p>
+            <div class="tech-tags">
+              <span class="tech-tag">SaaS</span>
+              <span class="tech-tag">Java</span>
+              <span class="tech-tag">Product Development</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects -->
+  <section class="section section-alt" id="projects">
+    <div class="container">
+      <h2 class="section-title">Projects</h2>
+      <div class="projects-grid">
+
+        <div class="project-card fade-in">
+          <div class="project-image-wrap">
+            <img src="images/correlation.png" alt="Correlation Analysis">
+            <div class="project-image-overlay"></div>
+          </div>
+          <div class="project-info">
+            <div class="project-label">Statistical Analysis</div>
+            <h3 class="project-title">Correlation: Finding Relationship Between Variables</h3>
+            <p class="project-description">
+              Exploring whether a relationship exists between the sepal length and petal length of flowers using statistical correlation methods.
+            </p>
+            <a href="Correlation.html" class="project-link" target="_blank">
+              View Project <span class="link-arrow">→</span>
+            </a>
+          </div>
+        </div>
+
+        <div class="project-card fade-in">
+          <div class="project-image-wrap">
+            <img src="images/anova_test.png" alt="ANOVA Test">
+            <div class="project-image-overlay"></div>
+          </div>
+          <div class="project-info">
+            <div class="project-label">Statistical Analysis</div>
+            <h3 class="project-title">ANOVA Test: Finding Relationship Between Variables</h3>
+            <p class="project-description">
+              Investigating the relationship between miles per gallon (mpg) and the number of cylinders in a car using Analysis of Variance.
+            </p>
+            <a href="anova_test.html" class="project-link" target="_blank">
+              View Project <span class="link-arrow">→</span>
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Education -->
+  <section class="section" id="education">
+    <div class="container">
+      <h2 class="section-title">Education</h2>
+      <div class="education-grid">
+
+        <div class="edu-card fade-in">
+          <div class="edu-icon-wrap">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+          </div>
+          <div class="edu-badge">Formal Education</div>
+          <h3 class="edu-name">NIIT University</h3>
+          <p class="edu-degree">MBA — Business Analytics</p>
+          <p class="edu-meta">2016 — 2017 &nbsp;·&nbsp; Neemrana, India</p>
+        </div>
+
+        <div class="edu-card fade-in">
+          <div class="edu-icon-wrap">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+          </div>
+          <div class="edu-badge">Formal Education</div>
+          <h3 class="edu-name">Tezpur University</h3>
+          <p class="edu-degree">B.Tech — Mechanical Engineering</p>
+          <p class="edu-meta">2009 — 2013 &nbsp;·&nbsp; Tezpur, India</p>
+        </div>
+
+        <div class="edu-card edu-card--online fade-in">
+          <div class="edu-icon-wrap edu-icon-wrap--teal">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+          </div>
+          <div class="edu-badge edu-badge--teal">Online Course</div>
+          <h3 class="edu-name">Udacity</h3>
+          <p class="edu-degree">Natural Language Processing Nanodegree</p>
+          <p class="edu-meta">2018</p>
+          <a href="https://in.udacity.com/course/natural-language-processing-nanodegree--nd892" class="edu-link" target="_blank">View Certificate →</a>
+        </div>
+
+        <div class="edu-card edu-card--online fade-in">
+          <div class="edu-icon-wrap edu-icon-wrap--teal">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+          </div>
+          <div class="edu-badge edu-badge--teal">Online Course</div>
+          <h3 class="edu-name">Udacity</h3>
+          <p class="edu-degree">Machine Learning Engineer Nanodegree</p>
+          <p class="edu-meta">July 2017</p>
+          <a href="https://in.udacity.com/course/machine-learning-engineer-nanodegree--nd009t" class="edu-link" target="_blank">View Certificate →</a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section class="section section-alt" id="contact">
+    <div class="container">
+      <h2 class="section-title">Let's Connect</h2>
+      <p class="contact-subtitle">
+        I'm always open to discussing data science, new opportunities, or just a friendly chat.
+      </p>
+      <div class="contact-grid">
+
+        <a href="mailto:bhaskarjitsarmah@gmail.com" class="contact-card fade-in">
+          <div class="contact-icon-wrap">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          </div>
+          <span class="contact-label">Email</span>
+          <span class="contact-value">bhaskarjitsarmah@gmail.com</span>
+        </a>
+
+        <a href="https://github.com/bhaskarjitsarmah" class="contact-card fade-in" target="_blank" rel="noopener">
+          <div class="contact-icon-wrap">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+          </div>
+          <span class="contact-label">GitHub</span>
+          <span class="contact-value">bhaskarjitsarmah</span>
+        </a>
+
+        <a href="https://twitter.com/iambhaskarjit" class="contact-card fade-in" target="_blank" rel="noopener">
+          <div class="contact-icon-wrap">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"/></svg>
+          </div>
+          <span class="contact-label">Twitter / X</span>
+          <span class="contact-value">@iambhaskarjit</span>
+        </a>
+
+        <div class="contact-card fade-in">
+          <div class="contact-icon-wrap">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          </div>
+          <span class="contact-label">Location</span>
+          <span class="contact-value">Delhi, India</span>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <span class="footer-logo">BS</span>
+      <p class="footer-text">© 2026 Bhaskarjit Sarmah. Built with passion for data.</p>
+    </div>
+  </footer>
 
   <script>
-  
-    if(document.getElementsByClassName('flex-item').length === 0) {
-      document.getElementById('topContacts').style.display = 'none';
-    }
-    if(document.getElementsByTagName('h1').length === 0) {
-      document.getElementById('header').style.display = 'none';
-    }
-    if(document.getElementsByClassName('work-entry').length === 0) {
-      document.getElementById('workExperience').style.display = 'none';
-    }
-    if(document.getElementsByClassName('project-entry').length === 0) {
-      document.getElementById('projects').style.display = 'none';
-    }
-    if(document.getElementsByClassName('education-entry').length === 0) {
-      document.getElementById('education').style.display = 'none';
-    }
-    if(document.getElementsByClassName('flex-item').length === 0) {
-      document.getElementById('lets-connect').style.display = 'none';
-    }
-    if(document.getElementById('map') === null) {
-      document.getElementById('mapDiv').style.display = 'none';
-    }
+    // Nav scroll effect
+    const nav = document.getElementById('nav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 50);
+    });
+
+    // Smooth scroll
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', e => {
+        const target = document.querySelector(a.getAttribute('href'));
+        if (target) {
+          e.preventDefault();
+          target.scrollIntoView({ behavior: 'smooth' });
+          // close mobile menu if open
+          document.getElementById('mobile-menu').classList.remove('open');
+          document.getElementById('nav-hamburger').classList.remove('open');
+        }
+      });
+    });
+
+    // Mobile menu toggle
+    const hamburger = document.getElementById('nav-hamburger');
+    const mobileMenu = document.getElementById('mobile-menu');
+    hamburger.addEventListener('click', () => {
+      hamburger.classList.toggle('open');
+      mobileMenu.classList.toggle('open');
+    });
+
+    // Intersection observer for fade-in animations
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach((entry, i) => {
+        if (entry.isIntersecting) {
+          entry.target.style.transitionDelay = (i % 4) * 80 + 'ms';
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
   </script>
 </body>
 </html>
