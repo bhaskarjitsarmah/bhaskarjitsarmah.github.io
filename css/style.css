@@ -595,6 +595,11 @@ a { color: inherit; }
   box-shadow: 0 0 14px rgba(124, 111, 247, 0.28);
 }
 
+.gantt-bar--green {
+  background: linear-gradient(90deg, #059669, #34d399);
+  box-shadow: 0 0 14px rgba(52, 211, 153, 0.22);
+}
+
 .gantt-bar--teal {
   background: linear-gradient(90deg, #0e7490, #00c9a7);
   box-shadow: 0 0 14px rgba(0, 201, 167, 0.28);
