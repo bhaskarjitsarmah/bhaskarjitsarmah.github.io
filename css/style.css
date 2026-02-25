@@ -1285,6 +1285,47 @@ a { color: inherit; }
 }
 
 /* ============================================================
+   SPEAKER SESSIONS
+   ============================================================ */
+.posts-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(504px, 1fr));
+  gap: 1.5rem;
+  justify-items: center;
+}
+
+.post-card {
+  background: var(--bg-card-solid);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  width: 100%;
+  max-width: 560px;
+  transition: border-color var(--transition), transform var(--transition);
+}
+
+.post-card:hover {
+  border-color: var(--accent-border);
+  transform: translateY(-3px);
+}
+
+.post-iframe {
+  display: block;
+  width: 100%;
+  min-height: 570px;
+  border: none;
+}
+
+@media (max-width: 580px) {
+  .posts-grid {
+    grid-template-columns: 1fr;
+  }
+  .post-iframe {
+    min-height: 480px;
+  }
+}
+
+/* ============================================================
    CONTACT
    ============================================================ */
 .contact-subtitle {
