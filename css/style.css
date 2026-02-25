@@ -1293,6 +1293,11 @@ a { color: inherit; }
   margin: 0 auto;
 }
 
+.posts-viewport {
+  overflow: hidden;
+  border-radius: var(--radius);
+}
+
 .posts-track {
   display: flex;
   transition: transform 0.45s cubic-bezier(0.4, 0, 0.2, 1);
