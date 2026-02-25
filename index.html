@@ -467,9 +467,11 @@
           </div>
         </div>
         </div><!-- end posts-viewport -->
-        <button class="carousel-btn carousel-btn--prev" id="posts-prev" aria-label="Previous post">&#8249;</button>
-        <button class="carousel-btn carousel-btn--next" id="posts-next" aria-label="Next post">&#8250;</button>
-        <div class="carousel-dots" id="carousel-dots"></div>
+        <div class="carousel-nav">
+          <button class="carousel-btn carousel-btn--prev" id="posts-prev" aria-label="Previous post">&#8249;</button>
+          <div class="carousel-dots" id="carousel-dots"></div>
+          <button class="carousel-btn carousel-btn--next" id="posts-next" aria-label="Next post">&#8250;</button>
+        </div>
       </div>
     </div>
   </section>
@@ -598,14 +600,18 @@
 
       function goTo(index) {
         current = Math.max(0, Math.min(index, cards.length - 1));
-        viewport.scrollTo({ left: current * viewport.offsetWidth, behavior: 'smooth' });
+        viewport.scrollTo({ left: cards[current].offsetLeft, behavior: 'smooth' });
         updateUI();
       }
 
       // Sync dots when user swipes / scrolls manually
       viewport.addEventListener('scroll', () => {
-        const idx = Math.round(viewport.scrollLeft / viewport.offsetWidth);
-        if (idx !== current) { current = idx; updateUI(); }
+        let closest = 0, minDist = Infinity;
+        cards.forEach((card, i) => {
+          const dist = Math.abs(card.offsetLeft - viewport.scrollLeft);
+          if (dist < minDist) { minDist = dist; closest = i; }
+        });
+        if (closest !== current) { current = closest; updateUI(); }
       }, { passive: true });
 
       prevBtn.addEventListener('click', () => { goTo(current - 1); resetAuto(); });
