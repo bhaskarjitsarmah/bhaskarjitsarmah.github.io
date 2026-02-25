@@ -1178,6 +1178,113 @@ a { color: inherit; }
 }
 
 /* ============================================================
+   TESTIMONIALS
+   ============================================================ */
+.section-subtitle {
+  color: var(--text-muted);
+  font-size: 1rem;
+  margin-top: -1.25rem;
+  margin-bottom: 2.5rem;
+}
+
+.testimonials-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.5rem;
+}
+
+.testimonial-card {
+  background: var(--bg-card-solid);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  transition: border-color var(--transition), transform var(--transition);
+}
+
+.testimonial-card:hover {
+  border-color: var(--accent-border);
+  transform: translateY(-3px);
+}
+
+.testimonial-quote-icon {
+  font-size: 3.5rem;
+  line-height: 1;
+  color: var(--accent);
+  opacity: 0.4;
+  font-family: Georgia, serif;
+  margin-bottom: -0.75rem;
+}
+
+.testimonial-text {
+  font-size: 0.92rem;
+  color: var(--text-secondary);
+  line-height: 1.75;
+  flex: 1;
+}
+
+.testimonial-footer {
+  display: flex;
+  align-items: center;
+  gap: 0.875rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--border);
+}
+
+.testimonial-avatar {
+  width: 44px;
+  height: 44px;
+  min-width: 44px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+}
+
+.testimonial-avatar--purple {
+  background: rgba(124, 111, 247, 0.18);
+  color: var(--accent-light);
+  border: 1px solid rgba(124, 111, 247, 0.35);
+}
+
+.testimonial-avatar--teal {
+  background: rgba(0, 201, 167, 0.15);
+  color: var(--teal);
+  border: 1px solid rgba(0, 201, 167, 0.3);
+}
+
+.testimonial-avatar--amber {
+  background: rgba(251, 146, 60, 0.15);
+  color: #fb923c;
+  border: 1px solid rgba(251, 146, 60, 0.3);
+}
+
+.testimonial-name {
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.testimonial-role {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  margin-top: 0.15rem;
+}
+
+.testimonial-context {
+  font-size: 0.75rem;
+  color: var(--accent-light);
+  margin-top: 0.3rem;
+  font-family: var(--font-mono);
+  opacity: 0.85;
+}
+
+/* ============================================================
    CONTACT
    ============================================================ */
 .contact-subtitle {
