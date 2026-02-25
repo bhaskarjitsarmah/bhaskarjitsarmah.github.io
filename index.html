@@ -621,7 +621,7 @@
       function startAuto() {
         autoTimer = setInterval(() => {
           goTo(current < cards.length - 1 ? current + 1 : 0);
-        }, 4000);
+        }, 2000);
       }
       function resetAuto() { clearInterval(autoTimer); startAuto(); }
 
