@@ -1285,28 +1285,27 @@ a { color: inherit; }
 }
 
 /* ============================================================
-   SPEAKER SESSIONS
+   SPEAKER SESSIONS — CAROUSEL
    ============================================================ */
-.posts-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(504px, 1fr));
-  gap: 1.5rem;
-  justify-items: center;
+.posts-carousel {
+  position: relative;
+  max-width: 560px;
+  margin: 0 auto;
+}
+
+.posts-track {
+  display: flex;
+  transition: transform 0.45s cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: transform;
 }
 
 .post-card {
+  flex: 0 0 100%;
+  width: 100%;
   background: var(--bg-card-solid);
   border: 1px solid var(--border);
   border-radius: var(--radius);
   overflow: hidden;
-  width: 100%;
-  max-width: 560px;
-  transition: border-color var(--transition), transform var(--transition);
-}
-
-.post-card:hover {
-  border-color: var(--accent-border);
-  transform: translateY(-3px);
 }
 
 .post-iframe {
@@ -1316,13 +1315,69 @@ a { color: inherit; }
   border: none;
 }
 
-@media (max-width: 580px) {
-  .posts-grid {
-    grid-template-columns: 1fr;
-  }
-  .post-iframe {
-    min-height: 480px;
-  }
+/* Prev / Next buttons */
+.carousel-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  border: 1px solid var(--border);
+  background: var(--bg-card-solid);
+  color: var(--text-primary);
+  font-size: 1.5rem;
+  line-height: 1;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background var(--transition), border-color var(--transition), opacity var(--transition);
+  z-index: 2;
+}
+
+.carousel-btn:hover:not(:disabled) {
+  background: var(--accent-glow);
+  border-color: var(--accent-border);
+  color: var(--accent-light);
+}
+
+.carousel-btn:disabled {
+  opacity: 0.25;
+  cursor: default;
+}
+
+.carousel-btn--prev { left: -54px; }
+.carousel-btn--next { right: -54px; }
+
+/* Dots */
+.carousel-dots {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-top: 1.25rem;
+}
+
+.carousel-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  border: none;
+  background: var(--border);
+  cursor: pointer;
+  padding: 0;
+  transition: background var(--transition), transform var(--transition);
+}
+
+.carousel-dot--active {
+  background: var(--accent);
+  transform: scale(1.3);
+}
+
+@media (max-width: 720px) {
+  .carousel-btn--prev { left: -8px; }
+  .carousel-btn--next { right: -8px; }
+  .post-iframe { min-height: 520px; }
 }
 
 /* ============================================================

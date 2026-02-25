@@ -438,40 +438,36 @@
     <div class="container">
       <h2 class="section-title">Speaker Sessions</h2>
       <p class="section-subtitle">Featured talks, workshops, and guest lectures shared on LinkedIn.</p>
-      <div class="posts-grid">
-
-        <div class="post-card fade-in">
-          <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:share:7394681426367086592?collapsed=1" height="670" width="504" frameborder="0" allowfullscreen title="Embedded post" class="post-iframe" loading="lazy"></iframe>
+      <div class="posts-carousel fade-in">
+        <div class="posts-track" id="posts-track">
+          <div class="post-card">
+            <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:share:7394681426367086592?collapsed=1" frameborder="0" allowfullscreen title="Embedded post" class="post-iframe" loading="lazy"></iframe>
+          </div>
+          <div class="post-card">
+            <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:share:7421573215099150336?collapsed=1" frameborder="0" allowfullscreen title="Embedded post" class="post-iframe" loading="lazy"></iframe>
+          </div>
+          <div class="post-card">
+            <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:share:7399788479359922176?collapsed=1" frameborder="0" allowfullscreen title="Embedded post" class="post-iframe" loading="lazy"></iframe>
+          </div>
+          <div class="post-card">
+            <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:share:7394197712142802945?collapsed=1" frameborder="0" allowfullscreen title="Embedded post" class="post-iframe" loading="lazy"></iframe>
+          </div>
+          <div class="post-card">
+            <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:share:7315583045955166208?collapsed=1" frameborder="0" allowfullscreen title="Embedded post" class="post-iframe" loading="lazy"></iframe>
+          </div>
+          <div class="post-card">
+            <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:share:7314357091282939904?collapsed=1" frameborder="0" allowfullscreen title="Embedded post" class="post-iframe" loading="lazy"></iframe>
+          </div>
+          <div class="post-card">
+            <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:share:7239635007793688577?collapsed=1" frameborder="0" allowfullscreen title="Embedded post" class="post-iframe" loading="lazy"></iframe>
+          </div>
+          <div class="post-card">
+            <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:share:7227499458719055872?collapsed=1" frameborder="0" allowfullscreen title="Embedded post" class="post-iframe" loading="lazy"></iframe>
+          </div>
         </div>
-
-        <div class="post-card fade-in">
-          <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:share:7421573215099150336?collapsed=1" height="670" width="504" frameborder="0" allowfullscreen title="Embedded post" class="post-iframe" loading="lazy"></iframe>
-        </div>
-
-        <div class="post-card fade-in">
-          <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:share:7399788479359922176?collapsed=1" height="655" width="504" frameborder="0" allowfullscreen title="Embedded post" class="post-iframe" loading="lazy"></iframe>
-        </div>
-
-        <div class="post-card fade-in">
-          <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:share:7394197712142802945?collapsed=1" height="670" width="504" frameborder="0" allowfullscreen title="Embedded post" class="post-iframe" loading="lazy"></iframe>
-        </div>
-
-        <div class="post-card fade-in">
-          <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:share:7315583045955166208?collapsed=1" height="670" width="504" frameborder="0" allowfullscreen title="Embedded post" class="post-iframe" loading="lazy"></iframe>
-        </div>
-
-        <div class="post-card fade-in">
-          <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:share:7314357091282939904?collapsed=1" height="670" width="504" frameborder="0" allowfullscreen title="Embedded post" class="post-iframe" loading="lazy"></iframe>
-        </div>
-
-        <div class="post-card fade-in">
-          <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:share:7239635007793688577?collapsed=1" height="670" width="504" frameborder="0" allowfullscreen title="Embedded post" class="post-iframe" loading="lazy"></iframe>
-        </div>
-
-        <div class="post-card fade-in">
-          <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:share:7227499458719055872?collapsed=1" height="603" width="504" frameborder="0" allowfullscreen title="Embedded post" class="post-iframe" loading="lazy"></iframe>
-        </div>
-
+        <button class="carousel-btn carousel-btn--prev" id="posts-prev" aria-label="Previous post">&#8249;</button>
+        <button class="carousel-btn carousel-btn--next" id="posts-next" aria-label="Next post">&#8250;</button>
+        <div class="carousel-dots" id="carousel-dots"></div>
       </div>
     </div>
   </section>
@@ -570,6 +566,39 @@
     }, { threshold: 0.12 });
 
     document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+    // Posts carousel
+    const track = document.getElementById('posts-track');
+    const prevBtn = document.getElementById('posts-prev');
+    const nextBtn = document.getElementById('posts-next');
+    const dotsWrap = document.getElementById('carousel-dots');
+    const cards = track ? track.querySelectorAll('.post-card') : [];
+    let current = 0;
+
+    if (cards.length) {
+      // Build dots
+      cards.forEach((_, i) => {
+        const dot = document.createElement('button');
+        dot.className = 'carousel-dot' + (i === 0 ? ' carousel-dot--active' : '');
+        dot.setAttribute('aria-label', 'Go to post ' + (i + 1));
+        dot.addEventListener('click', () => goTo(i));
+        dotsWrap.appendChild(dot);
+      });
+
+      function goTo(index) {
+        current = index;
+        track.style.transform = 'translateX(-' + (current * 100) + '%)';
+        dotsWrap.querySelectorAll('.carousel-dot').forEach((d, i) => {
+          d.classList.toggle('carousel-dot--active', i === current);
+        });
+        prevBtn.disabled = current === 0;
+        nextBtn.disabled = current === cards.length - 1;
+      }
+
+      prevBtn.addEventListener('click', () => { if (current > 0) goTo(current - 1); });
+      nextBtn.addEventListener('click', () => { if (current < cards.length - 1) goTo(current + 1); });
+      goTo(0);
+    }
   </script>
 </body>
 </html>
