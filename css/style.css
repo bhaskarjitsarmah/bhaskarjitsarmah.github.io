@@ -1291,22 +1291,29 @@ a { color: inherit; }
   position: relative;
   max-width: 560px;
   margin: 0 auto;
+  padding: 0 54px;
 }
 
 .posts-viewport {
-  overflow: hidden;
+  overflow-x: scroll;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
   border-radius: var(--radius);
 }
 
+.posts-viewport::-webkit-scrollbar { display: none; }
+
 .posts-track {
   display: flex;
-  transition: transform 0.45s cubic-bezier(0.4, 0, 0.2, 1);
-  will-change: transform;
+  width: 100%;
 }
 
 .post-card {
   flex: 0 0 100%;
-  width: 100%;
+  min-width: 100%;
+  scroll-snap-align: start;
   background: var(--bg-card-solid);
   border: 1px solid var(--border);
   border-radius: var(--radius);
@@ -1323,7 +1330,7 @@ a { color: inherit; }
 /* Prev / Next buttons */
 .carousel-btn {
   position: absolute;
-  top: 50%;
+  top: 40%;
   transform: translateY(-50%);
   width: 42px;
   height: 42px;
@@ -1352,8 +1359,8 @@ a { color: inherit; }
   cursor: default;
 }
 
-.carousel-btn--prev { left: -54px; }
-.carousel-btn--next { right: -54px; }
+.carousel-btn--prev { left: 0; }
+.carousel-btn--next { right: 0; }
 
 /* Dots */
 .carousel-dots {
@@ -1380,8 +1387,7 @@ a { color: inherit; }
 }
 
 @media (max-width: 720px) {
-  .carousel-btn--prev { left: -8px; }
-  .carousel-btn--next { right: -8px; }
+  .posts-carousel { padding: 0 36px; }
   .post-iframe { min-height: 520px; }
 }
 

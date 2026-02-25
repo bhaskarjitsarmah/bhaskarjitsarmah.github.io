@@ -439,7 +439,7 @@
       <h2 class="section-title">Speaker Sessions</h2>
       <p class="section-subtitle">Featured talks, workshops, and guest lectures shared on LinkedIn.</p>
       <div class="posts-carousel fade-in">
-        <div class="posts-viewport">
+        <div class="posts-viewport" id="posts-viewport">
         <div class="posts-track" id="posts-track">
           <div class="post-card">
             <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:share:7394681426367086592?collapsed=1" frameborder="0" allowfullscreen title="Embedded post" class="post-iframe" loading="lazy"></iframe>
@@ -570,12 +570,13 @@
     document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
 
     // Posts carousel
-    const track = document.getElementById('posts-track');
-    const prevBtn = document.getElementById('posts-prev');
-    const nextBtn = document.getElementById('posts-next');
-    const dotsWrap = document.getElementById('carousel-dots');
-    const cards = track ? track.querySelectorAll('.post-card') : [];
-    let current = 0;
+    const viewport  = document.getElementById('posts-viewport');
+    const prevBtn   = document.getElementById('posts-prev');
+    const nextBtn   = document.getElementById('posts-next');
+    const dotsWrap  = document.getElementById('carousel-dots');
+    const cards     = viewport ? viewport.querySelectorAll('.post-card') : [];
+    let current     = 0;
+    let autoTimer;
 
     if (cards.length) {
       // Build dots
@@ -583,13 +584,11 @@
         const dot = document.createElement('button');
         dot.className = 'carousel-dot' + (i === 0 ? ' carousel-dot--active' : '');
         dot.setAttribute('aria-label', 'Go to post ' + (i + 1));
-        dot.addEventListener('click', () => goTo(i));
+        dot.addEventListener('click', () => { goTo(i); resetAuto(); });
         dotsWrap.appendChild(dot);
       });
 
-      function goTo(index) {
-        current = index;
-        track.style.transform = 'translateX(-' + (current * 100) + '%)';
+      function updateUI() {
         dotsWrap.querySelectorAll('.carousel-dot').forEach((d, i) => {
           d.classList.toggle('carousel-dot--active', i === current);
         });
@@ -597,9 +596,35 @@
         nextBtn.disabled = current === cards.length - 1;
       }
 
-      prevBtn.addEventListener('click', () => { if (current > 0) goTo(current - 1); });
-      nextBtn.addEventListener('click', () => { if (current < cards.length - 1) goTo(current + 1); });
+      function goTo(index) {
+        current = Math.max(0, Math.min(index, cards.length - 1));
+        viewport.scrollTo({ left: current * viewport.offsetWidth, behavior: 'smooth' });
+        updateUI();
+      }
+
+      // Sync dots when user swipes / scrolls manually
+      viewport.addEventListener('scroll', () => {
+        const idx = Math.round(viewport.scrollLeft / viewport.offsetWidth);
+        if (idx !== current) { current = idx; updateUI(); }
+      }, { passive: true });
+
+      prevBtn.addEventListener('click', () => { goTo(current - 1); resetAuto(); });
+      nextBtn.addEventListener('click', () => { goTo(current + 1); resetAuto(); });
+
+      // Auto-advance every 4 seconds
+      function startAuto() {
+        autoTimer = setInterval(() => {
+          goTo(current < cards.length - 1 ? current + 1 : 0);
+        }, 4000);
+      }
+      function resetAuto() { clearInterval(autoTimer); startAuto(); }
+
+      // Pause on hover
+      viewport.addEventListener('mouseenter', () => clearInterval(autoTimer));
+      viewport.addEventListener('mouseleave', startAuto);
+
       goTo(0);
+      startAuto();
     }
   </script>
 </body>
