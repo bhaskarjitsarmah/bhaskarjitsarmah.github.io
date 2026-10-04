@@ -96,7 +96,7 @@
             <!-- Year axis -->
             <div class="gantt-row gantt-row--axis">
               <div class="gantt-label"></div>
-              <div class="gantt-track gantt-track--axis">
+              <div class="gantt-track gantt-track--axis" id="gantt-axis">
                 <span style="left:0%">2013</span>
                 <span style="left:15.19%">2015</span>
                 <span style="left:30.38%">2017</span>
@@ -111,7 +111,7 @@
             <div class="gantt-row">
               <div class="gantt-label">Capgemini</div>
               <div class="gantt-track">
-                <div class="gantt-bar gantt-bar--blue" style="left:3.16%;width:23.42%">3 yrs 1 mo</div>
+                <div class="gantt-bar gantt-bar--blue" data-start="2013-06" data-end="2016-07" style="left:3.16%;width:23.42%">3 yrs 1 mo</div>
               </div>
             </div>
 
@@ -119,7 +119,7 @@
             <div class="gantt-row">
               <div class="gantt-label">WNS</div>
               <div class="gantt-track">
-                <div class="gantt-bar gantt-bar--green" style="left:26.58%;width:15.19%">2 yrs</div>
+                <div class="gantt-bar gantt-bar--green" data-start="2016-07" data-end="2018-07" style="left:26.58%;width:15.19%">2 yrs</div>
               </div>
             </div>
 
@@ -127,7 +127,7 @@
             <div class="gantt-row">
               <div class="gantt-label">Grail Insights</div>
               <div class="gantt-track">
-                <div class="gantt-bar gantt-bar--amber" style="left:42.41%;width:3.16%" title="5 months"></div>
+                <div class="gantt-bar gantt-bar--amber" data-start="2018-08" data-end="2019-01" style="left:42.41%;width:3.16%" title="5 months"></div>
               </div>
             </div>
 
@@ -135,7 +135,7 @@
             <div class="gantt-row">
               <div class="gantt-label">BlackRock</div>
               <div class="gantt-track">
-                <div class="gantt-bar gantt-bar--purple" style="left:45.57%;width:47.47%">6 yrs 3 mos</div>
+                <div class="gantt-bar gantt-bar--purple" data-start="2019-01" data-end="2025-04" style="left:45.57%;width:47.47%">6 yrs 3 mos</div>
               </div>
             </div>
 
@@ -143,7 +143,7 @@
             <div class="gantt-row">
               <div class="gantt-label">Domyn</div>
               <div class="gantt-track">
-                <div class="gantt-bar gantt-bar--teal gantt-bar--active" style="left:93.67%;width:5.70%" title="9 months · ongoing"></div>
+                <div class="gantt-bar gantt-bar--teal gantt-bar--active" data-start="2025-05" data-end="present" style="left:93.67%;width:5.70%" title="9 months · ongoing"></div>
               </div>
             </div>
 
@@ -649,6 +649,60 @@
       goTo(0);
       startAuto();
     }
+  </script>
+  <script>
+    // Career timeline: bar positions/widths, axis labels and durations are
+    // computed from data-start / data-end ("present" = now), so the chart
+    // stays current without edits. Months are counted from Jan 2013, and the
+    // current month counts as a full month. The static values in the markup
+    // are only a fallback if this script doesn't run.
+    (function () {
+      var chart = document.querySelector('.gantt');
+      if (!chart) return;
+      var ORIGIN = 2013;
+      var monthIndex = function (ym) {
+        var p = ym.split('-');
+        return (+p[0] - ORIGIN) * 12 + (+p[1] - 1);
+      };
+      var now = new Date();
+      var nowIndex = (now.getFullYear() - ORIGIN) * 12 + now.getMonth() + 1;
+      var total = nowIndex;
+      var pct = function (m) { return (m / total * 100).toFixed(2) + '%'; };
+      var plural = function (n, w) { return n + ' ' + w + (n === 1 ? '' : 's'); };
+      var duration = function (m) {
+        var y = Math.floor(m / 12), mo = m % 12, out = [];
+        if (y) out.push(plural(y, 'yr'));
+        if (mo) out.push(plural(mo, 'mo'));
+        return out.join(' ');
+      };
+
+      chart.querySelectorAll('.gantt-bar[data-start]').forEach(function (bar) {
+        var start = monthIndex(bar.dataset.start);
+        var end = bar.dataset.end === 'present' ? nowIndex : monthIndex(bar.dataset.end);
+        var months = end - start;
+        bar.style.left = pct(start);
+        bar.style.width = pct(months);
+        if (bar.dataset.end === 'present') {
+          bar.title = plural(months, 'month') + ' · ongoing';
+        }
+        if (months >= 12) bar.textContent = duration(months);
+      });
+
+      chart.querySelectorAll('.gantt-track:not(.gantt-track--axis)').forEach(function (t) {
+        t.style.backgroundSize = (12 / total * 100) + '% 100%';
+      });
+
+      var axis = document.getElementById('gantt-axis');
+      if (axis) {
+        axis.innerHTML = '';
+        for (var y = ORIGIN; (y - ORIGIN) * 12 < total; y += 2) {
+          var span = document.createElement('span');
+          span.style.left = pct((y - ORIGIN) * 12);
+          span.textContent = y;
+          axis.appendChild(span);
+        }
+      }
+    })();
   </script>
 </body>
 </html>
