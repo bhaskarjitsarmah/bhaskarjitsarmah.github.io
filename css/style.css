@@ -624,6 +624,60 @@ a { color: inherit; }
   50%       { opacity: 0.3; transform: translateY(-50%) scale(0.5); }
 }
 
+/* Software era strip + chips (1.0 rules / 2.0 ML / 3.0 agentic) */
+.gantt-track--era {
+  background-image: none;
+  background-color: transparent;
+  height: 28px;
+  margin-bottom: 0.25rem;
+}
+
+.gantt-era {
+  position: absolute;
+  top: 0;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid;
+  font-family: 'Fira Code', monospace;
+  font-size: 0.64rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  white-space: nowrap;
+  overflow: hidden;
+  cursor: default;
+}
+
+.gantt-era--1, .era-chip--1 { background: rgba(255,255,255,0.09); color: #cfcfe2; border-color: rgba(255,255,255,0.2); }
+.gantt-era--2, .era-chip--2 { background: rgba(59,130,246,0.2);  color: #93c5fd; border-color: rgba(96,165,250,0.42); }
+.gantt-era--3, .era-chip--3 { background: rgba(251,146,60,0.16); color: #fdba74; border-color: rgba(251,146,60,0.5); }
+
+.era-chip {
+  display: inline-block;
+  font-family: 'Fira Code', monospace;
+  font-size: 0.68rem;
+  font-weight: 600;
+  padding: 0.12rem 0.6rem;
+  border: 1px solid;
+  border-radius: 100px;
+  margin-bottom: 0.35rem;
+  white-space: nowrap;
+}
+
+.gantt-legend {
+  list-style: none;
+  margin-top: 1.25rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--border);
+  display: grid;
+  gap: 0.5rem;
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+}
+
+.gantt-legend .era-chip { margin: 0 0.5rem 0 0; min-width: 6.6rem; text-align: center; }
+
 /* Duration pill on timeline cards */
 .duration-pill {
   display: inline-block;

@@ -107,6 +107,16 @@
               </div>
             </div>
 
+            <!-- Software era strip (1.0 / 2.0 / 3.0) -->
+            <div class="gantt-row gantt-row--era">
+              <div class="gantt-label">Era</div>
+              <div class="gantt-track gantt-track--era">
+                <div class="gantt-era gantt-era--1" data-start="2013-01" data-end="2016-07" title="Software 1.0 &middot; rule-based systems">SW 1.0</div>
+                <div class="gantt-era gantt-era--2" data-start="2016-07" data-end="2025-05" title="Software 2.0 &middot; ML / learned from data">SW 2.0</div>
+                <div class="gantt-era gantt-era--3" data-start="2025-05" data-end="present" title="Software 3.0 &middot; agentic AI">SW 3.0</div>
+              </div>
+            </div>
+
             <!-- Capgemini -->
             <div class="gantt-row">
               <div class="gantt-label">Capgemini</div>
@@ -149,6 +159,11 @@
 
           </div>
         </div>
+        <ul class="gantt-legend">
+          <li><span class="era-chip era-chip--1">Software 1.0</span> Rule-based code &middot; Capgemini</li>
+          <li><span class="era-chip era-chip--2">Software 2.0</span> ML learned from data &middot; WNS, Grail Insights, BlackRock</li>
+          <li><span class="era-chip era-chip--3">Software 3.0</span> Agentic AI that plans &amp; uses tools &middot; Domyn</li>
+        </ul>
       </div>
 
       <div class="timeline">
@@ -161,7 +176,8 @@
               <span class="timeline-badge">May 2025 — Present</span>
             </div>
             <p class="job-title">Head of AI Research for Financial Services</p>
-            <span class="duration-pill">9 mos · ongoing</span>
+            <span class="era-chip era-chip--3">Software 3.0</span>
+            <span class="duration-pill" id="domyn-duration">9 mos · ongoing</span>
             <p class="job-location">India</p>
             <p class="job-description">
               Leading AI research initiatives focused on financial services, driving the development of next-generation models and systems to transform decision-making across financial domains.
@@ -183,6 +199,7 @@
               <span class="timeline-badge">Jan 2019 — Apr 2025</span>
             </div>
             <p class="job-title">Director, Principal Data Scientist</p>
+            <span class="era-chip era-chip--2">Software 2.0</span>
             <span class="duration-pill">6 yrs 3 mos</span>
             <p class="job-location">Gurgaon, India</p>
             <p class="job-description">
@@ -205,6 +222,7 @@
               <span class="timeline-badge">Aug 2018 — Dec 2018</span>
             </div>
             <p class="job-title">Data Science Manager</p>
+            <span class="era-chip era-chip--2">Software 2.0</span>
             <span class="duration-pill">5 mos</span>
             <p class="job-location">Noida, India</p>
             <p class="job-description">
@@ -227,6 +245,7 @@
               <span class="timeline-badge">Jul 2016 — Jul 2018</span>
             </div>
             <p class="job-title">Data Science Consultant</p>
+            <span class="era-chip era-chip--2">Software 2.0</span>
             <span class="duration-pill">2 yrs</span>
             <p class="job-location">Gurgaon, India</p>
             <p class="job-description">
@@ -249,6 +268,7 @@
               <span class="timeline-badge">Jun 2013 — Jul 2016</span>
             </div>
             <p class="job-title">Consultant</p>
+            <span class="era-chip era-chip--1">Software 1.0</span>
             <span class="duration-pill">3 yrs 1 mo</span>
             <p class="job-location">Mumbai, India</p>
             <p class="job-description">
@@ -676,19 +696,22 @@
         return out.join(' ');
       };
 
-      chart.querySelectorAll('.gantt-bar[data-start]').forEach(function (bar) {
+      chart.querySelectorAll('[data-start]').forEach(function (bar) {
         var start = monthIndex(bar.dataset.start);
         var end = bar.dataset.end === 'present' ? nowIndex : monthIndex(bar.dataset.end);
         var months = end - start;
         bar.style.left = pct(start);
         bar.style.width = pct(months);
+        if (!bar.classList.contains('gantt-bar')) return;
         if (bar.dataset.end === 'present') {
           bar.title = plural(months, 'month') + ' · ongoing';
+          var pill = document.getElementById('domyn-duration');
+          if (pill) pill.textContent = (months >= 12 ? duration(months) : plural(months, 'mo')) + ' · ongoing';
         }
         if (months >= 12) bar.textContent = duration(months);
       });
 
-      chart.querySelectorAll('.gantt-track:not(.gantt-track--axis)').forEach(function (t) {
+      chart.querySelectorAll('.gantt-track:not(.gantt-track--axis):not(.gantt-track--era)').forEach(function (t) {
         t.style.backgroundSize = (12 / total * 100) + '% 100%';
       });
 
